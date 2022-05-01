@@ -4,7 +4,7 @@ bindkey -v
 BASEDIR=$(dirname "$0")
 
 # init brew and auto complete
-if [[ $(uname) -eq "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
     source $BASEDIR/darwin.zsh
 fi
 

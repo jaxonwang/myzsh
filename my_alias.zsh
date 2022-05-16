@@ -1,6 +1,6 @@
 alias vim="nvim"
 alias v="vim"
-alias ls="ls -G"
+alias ls="lsd --icon never"
 alias ll="ls -alF"
 alias top="top -o cpu"
 alias grep="grep --color=auto"
@@ -11,4 +11,4 @@ function gpp_run_fun(){
     g++ $* -o $JUSTFILE && (./$JUSTFILE; rm -f ./$LONGNAME)
 }
 alias gpprun="gpp_run_fun"
-
+alias tmux="env TERM=screen-256color tmux"

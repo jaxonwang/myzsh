@@ -29,18 +29,12 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
 
 autoload -Uz compinit
 compinit
 
 # plugins
 #
-# fzf-tab needs to be loaded after compinit, but before plugins which will wrap
-# widgets, such as zsh-autosuggestions or fast-syntax-highlighting!!
-source $BASEDIR/fzf-tab/fzf-tab.plugin.zsh
 source $BASEDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $BASEDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $BASEDIR/zsh-completions/zsh-completions.plugin.zsh

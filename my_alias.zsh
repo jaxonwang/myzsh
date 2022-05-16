@@ -5,6 +5,8 @@ alias ll="ls -alF"
 alias top="top -o cpu"
 alias grep="grep --color=auto"
 alias gs="git status"
+alias ga="git add"
+alias gl="git log"
 function gpp_run_fun(){
     LONGNAME="lllllllllllnameforgpptempfileafsdsafasdfdasljkl.out"
     JUSTFILE=$TMPDIR/$LONGNAME

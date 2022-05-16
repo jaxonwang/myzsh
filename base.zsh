@@ -34,7 +34,6 @@ autoload -Uz compinit
 compinit
 
 # plugins
-#
 source $BASEDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $BASEDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $BASEDIR/zsh-completions/zsh-completions.plugin.zsh

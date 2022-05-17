@@ -14,3 +14,4 @@ function gpp_run_fun(){
 }
 alias gpprun="gpp_run_fun"
 # alias tmux="env TERM=xterm-256color tmux"
+alias zshp="MYZSH_DO_PROFILING=true zsh"

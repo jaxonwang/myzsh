@@ -1,3 +1,7 @@
+if [[ ${MYZSH_DO_PROFILING} == true ]]; then
+    zmodload zsh/zprof
+fi
+
 # use vim emulator
 bindkey -v
 
@@ -65,3 +69,8 @@ export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
 # alias
 source $BASEDIR/my_alias.zsh
+
+if [[ ${MYZSH_DO_PROFILING} == true ]]; then
+    zprof
+    exit
+fi

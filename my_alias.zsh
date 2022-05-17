@@ -13,4 +13,4 @@ function gpp_run_fun(){
     g++ $* -o $JUSTFILE && (./$JUSTFILE; rm -f ./$LONGNAME)
 }
 alias gpprun="gpp_run_fun"
-alias tmux="env TERM=screen-256color tmux"
+# alias tmux="env TERM=xterm-256color tmux"

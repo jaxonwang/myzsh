@@ -13,3 +13,6 @@
 [submodule "fzf-tab"]
 	path = fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "tmux-widget"]
+	path = tmux-widget
+	url = https://github.com/jaxonwang/tmux-widget

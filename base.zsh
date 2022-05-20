@@ -5,11 +5,13 @@ fi
 # use vim emulator
 bindkey -v
 
-BASEDIR=$(dirname "$0")
+# https://stackoverflow.com/questions/59895/how-can-i-get-the-source-directory-of-a-bash-script-from-within-the-script-itsel
+MY_DOTFILE_REPO_PATH=$( cd -- "$( dirname -- "$0" )" &> /dev/null && pwd )
+export MY_DOTFILE_REPO_PATH
 
 # init brew and auto complete
 if [[ $(uname) == "Darwin" ]]; then
-    source $BASEDIR/darwin.zsh
+    source $MY_DOTFILE_REPO_PATH/darwin.zsh
 fi
 
 # locale
@@ -38,10 +40,10 @@ autoload -Uz compinit
 compinit
 
 # plugins
-source $BASEDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $BASEDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source $BASEDIR/zsh-completions/zsh-completions.plugin.zsh
-source $BASEDIR/zsh-autopair/autopair.zsh && autopair-init
+source $MY_DOTFILE_REPO_PATH/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $MY_DOTFILE_REPO_PATH/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $MY_DOTFILE_REPO_PATH/zsh-completions/zsh-completions.plugin.zsh
+source $MY_DOTFILE_REPO_PATH/zsh-autopair/autopair.zsh && autopair-init
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd'
@@ -68,7 +70,7 @@ export LESS_TERMCAP_so=$'\E[1m\E[33m\E[44m'
 export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
 # alias
-source $BASEDIR/my_alias.zsh
+source $MY_DOTFILE_REPO_PATH/my_alias.zsh
 
 if [[ ${MYZSH_DO_PROFILING} == true ]]; then
     zprof

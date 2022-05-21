@@ -102,12 +102,18 @@ tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$right_arrow_icon"
 tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "G12"
 tmux_set status-left-length 150
+
+# User and host
 user=$(whoami)
-LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon#[fg=$TC,bg=$G06] $session_icon #S "
+LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon"
+# Session
+LS="$LS#[fg=$TC,bg=$G06] $session_icon #S "
+
+# Status indicator
 LS="$LS#{tmux_mode_indicator}"
 # cpu memory usage
 cpu_mem_usage="#($SDIR/tmux-widget/target/release/tmux-widget --cpu --mem --with-icons)"
-LS="$LS#[fg=$G06,bg=$G05]$right_arrow_icon#[fg=$TC,bg=$G05] $cpu_mem_usage #[fg=$G05,bg=$BG]$right_arrow_icon"
+LS="$LS#[fg=$TC,bg=$G06] $cpu_mem_usage #[fg=$G06,bg=$BG]$right_arrow_icon"
 
 if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
     LS="$LS#{prefix_highlight}"
@@ -167,3 +173,14 @@ tmux_set message-command-style "fg=$TC,bg=$BG"
 
 # Copy mode highlight
 tmux_set mode-style "bg=$TC,fg=$FG"
+
+# Set the style of mode indicator
+tmux_set @mode_indicator_prefix_prompt "$right_arrow_icon WAIT $left_arrow_icon"
+tmux_set @mode_indicator_copy_prompt "$right_arrow_icon COPY $left_arrow_icon"
+tmux_set @mode_indicator_sync_prompt "$right_arrow_icon SYNC $left_arrow_icon"
+tmux_set @mode_indicator_empty_prompt "$right_arrow_icon TMUX $left_arrow_icon"
+tmux_set @mode_indicator_prefix_mode_style "bg=blue,fg=$G06"
+tmux_set @mode_indicator_copy_mode_style "bg=yellow,fg=$G06"
+tmux_set @mode_indicator_sync_mode_style "bg=red,fg=$G06"
+tmux_set @mode_indicator_empty_mode_style "bg=cyan,fg=$G06"
+source "$SDIR/tmux-mode-indicator/mode_indicator.tmux"

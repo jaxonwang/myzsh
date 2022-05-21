@@ -16,3 +16,6 @@
 [submodule "tmux-widget"]
 	path = tmux-widget
 	url = https://github.com/jaxonwang/tmux-widget
+[submodule "tmux-mode-indicator"]
+	path = tmux-mode-indicator
+	url = https://github.com/MunifTanjim/tmux-mode-indicator.git

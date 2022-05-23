@@ -34,6 +34,7 @@ time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
 
 # short for Theme-Colour
+TMUX_HASH_THEME=$(tmux_get @tmux_hash_theme false)
 if [[ $TMUX_HASH_THEME = true ]]; then
 # set color by hostname hash
 TC=$(PYTHONHASHSEED=0 python - << EOF

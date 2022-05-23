@@ -32,8 +32,24 @@ show_web_reachable="$(tmux_get @tmux_power_show_web_reachable false)"
 prefix_highlight_pos=$(tmux_get @tmux_power_prefix_highlight_pos)
 time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
+
 # short for Theme-Colour
-TC=$(tmux_get '@tmux_power_theme' 'gold')
+if [[ $TMUX_HASH_THEME = true ]]; then
+# set color by hostname hash
+TC=$(PYTHONHASHSEED=0 python - << EOF
+import socket
+import random as r
+r.seed(socket.gethostname())
+pick = ["00", "5f", "87", "af", "d7", "ff"]
+p1 = [0, 0, 0]
+while sum(p1) <= 6:  # too dark
+    p1 = [r.randrange(6), r.randrange(6), r.randrange(6) % 6]
+print("#%s%s%s" % (pick[p1[0]], pick[p1[1]], pick[p1[2]]))
+EOF
+)
+else
+    TC=$(tmux_get '@tmux_power_theme' 'gold')
+fi
 case $TC in
     'gold' )
         TC='#ffb86c'

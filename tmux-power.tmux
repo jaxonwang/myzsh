@@ -37,7 +37,7 @@ date_format=$(tmux_get @tmux_power_date_format '%F')
 TMUX_HASH_THEME=$(tmux_get @tmux_hash_theme false)
 if [[ $TMUX_HASH_THEME = true ]]; then
 # set color by hostname hash
-TC=$(PYTHONHASHSEED=0 python - << EOF
+TC=$(PYTHONHASHSEED=0 python3 - << EOF
 import socket
 import random as r
 r.seed(socket.gethostname())

@@ -83,3 +83,19 @@ if [[ ${MYZSH_DO_PROFILING} == true ]]; then
     zprof
     exit
 fi
+
+append_path(){
+    local newpath=$1
+    if [[ ! -d $newpath ]]; then
+        printf "warnning: path $newpath does not exist\n"
+        return
+    fi
+    # affix colons on either side of $PATH to simplify matching
+    case ":${PATH}:" in
+        *:"$newpath":*)
+            ;;
+        *)
+            export PATH="$newpath:$PATH"
+            ;;
+    esac
+}

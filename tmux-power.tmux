@@ -18,8 +18,8 @@ tmux_set() {
 }
 
 # Options
-right_arrow_icon=$(tmux_get '@tmux_power_right_arrow_icon' '')
-left_arrow_icon=$(tmux_get '@tmux_power_left_arrow_icon' '')
+right_arrow_icon=$(tmux_get '@tmux_power_right_arrow_icon' '')
+left_arrow_icon=$(tmux_get '@tmux_power_left_arrow_icon' '')
 upload_speed_icon=$(tmux_get '@tmux_power_upload_speed_icon' '')
 download_speed_icon=$(tmux_get '@tmux_power_download_speed_icon' '')
 session_icon="$(tmux_get '@tmux_power_session_icon' '')"
@@ -95,7 +95,7 @@ G11=#6c6c6c #242
 G12=#767676 #243
 
 FG="$G10"
-BG="$G04"
+BG="$G03"
 
 # Status options
 tmux_set status-interval 1
@@ -122,9 +122,9 @@ tmux_set status-left-length 150
 
 # User and host
 user=$(whoami)
-LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon"
+LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[default]"
 # Session
-LS="$LS#[fg=$TC,bg=$G06] $session_icon #S "
+LS="$LS#[fg=$G06]$left_arrow_icon#[fg=$TC,bg=$G06] $session_icon #S "
 
 # Status indicator
 LS="$LS#{tmux_mode_indicator}"
@@ -157,7 +157,7 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
+tmux_set window-status-current-format "#[fg=$G06,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G06,bold]#I:#W#F#[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
@@ -192,10 +192,10 @@ tmux_set message-command-style "fg=$TC,bg=$BG"
 tmux_set mode-style "bg=$TC,fg=$FG"
 
 # Set the style of mode indicator
-tmux_set @mode_indicator_prefix_prompt "$right_arrow_icon WAIT $left_arrow_icon"
-tmux_set @mode_indicator_copy_prompt "$right_arrow_icon COPY $left_arrow_icon"
-tmux_set @mode_indicator_sync_prompt "$right_arrow_icon SYNC $left_arrow_icon"
-tmux_set @mode_indicator_empty_prompt "$right_arrow_icon TMUX $left_arrow_icon"
+tmux_set @mode_indicator_prefix_prompt " WAIT "
+tmux_set @mode_indicator_copy_prompt " COPY "
+tmux_set @mode_indicator_sync_prompt " SYNC "
+tmux_set @mode_indicator_empty_prompt " TMUX "
 tmux_set @mode_indicator_prefix_mode_style "bg=blue,fg=$G06"
 tmux_set @mode_indicator_copy_mode_style "bg=yellow,fg=$G06"
 tmux_set @mode_indicator_sync_mode_style "bg=red,fg=$G06"

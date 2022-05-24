@@ -37,14 +37,16 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
 
 autoload -Uz compinit
-autoload -Uz compinit
-# from https://gist.github.com/ctechols/ca1035271ad134841284
-# load zcompdump once a day
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-	compinit;
-else
-	compinit -C;
-fi;
+compinit
+# speed up compinit by compilation
+# Execute code in the background to not affect the current session
+{
+  # Compile zcompdump, if modified, to increase startup speed.
+  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "$zcompdump"
+  fi
+} &!
 
 # plugins
 source $MY_DOTFILE_REPO_PATH/zsh-autosuggestions/zsh-autosuggestions.zsh

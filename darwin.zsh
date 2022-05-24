@@ -1,5 +1,5 @@
 # homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($(command -v brew) shellenv)"
 
 # auto complete
 if type brew &>/dev/null

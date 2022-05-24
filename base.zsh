@@ -37,13 +37,20 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
 
 autoload -Uz compinit
-compinit
+autoload -Uz compinit
+# from https://gist.github.com/ctechols/ca1035271ad134841284
+# load zcompdump once a day
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 # plugins
 source $MY_DOTFILE_REPO_PATH/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $MY_DOTFILE_REPO_PATH/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $MY_DOTFILE_REPO_PATH/zsh-completions/zsh-completions.plugin.zsh
-source $MY_DOTFILE_REPO_PATH/zsh-autopair/autopair.zsh && autopair-init
+source $MY_DOTFILE_REPO_PATH/zsh-autopair/autopair.zsh
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd'

@@ -101,3 +101,12 @@ append_path(){
             ;;
     esac
 }
+
+# locally set up using my personal author info
+dolocalgitconfig(){
+    git config --local user.email "jxwang92@gmail.com"
+    git config --local user.name "JX Wang"
+    git config --local --get user.name
+    git config --local --get user.email
+}
+alias gitlocalsetup='dolocalgitconfig'

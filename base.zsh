@@ -111,6 +111,7 @@ dolocalgitconfig(){
 }
 alias gitlocalsetup='dolocalgitconfig'
 
+# change github repo url to ssh
 giturl(){
     url=$(git remote get-url origin)
     if [[ $? -ne 0 ]]; then

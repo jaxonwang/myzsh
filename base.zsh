@@ -110,3 +110,16 @@ dolocalgitconfig(){
     git config --local --get user.email
 }
 alias gitlocalsetup='dolocalgitconfig'
+
+giturl(){
+    url=$(git remote get-url origin)
+    if [[ $? -ne 0 ]]; then
+        return $?
+    fi
+
+   if [[ $url != "git@"* ]]; then
+        IFS='/' read -r -A a <<< $url
+        sshurl="git@${a[3]}:${a[4]}/${a[5]}"
+        git remote set-url origin $sshurl
+   fi
+}

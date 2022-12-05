@@ -2,6 +2,12 @@ if [[ ${MYZSH_DO_PROFILING} == true ]]; then
     zmodload zsh/zprof
 fi
 
+# set history
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # use vim emulator
 bindkey -v
 

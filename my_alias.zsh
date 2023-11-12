@@ -2,7 +2,6 @@ alias vim="nvim"
 alias v="vim"
 alias ls="lsd --icon never"
 alias ll="ls -alF"
-alias top="top -o cpu"
 alias grep="grep --color=auto"
 
 alias g="git"
